@@ -1,0 +1,29 @@
+<div class="row">
+    <h1>{{seriesInfo.title}}</h1>
+    <hr/>
+    <input type="date" value="2016-09-01" ng-model="eventfilter.date" ng-change="select_by_date()"/>
+    <span ng-repeat="dow in eventfilter.dow">
+    {{dow.name}}: <input type="checkbox" ng-model="dow.selected" ng-change="select_by_dow()"/>
+    </span>
+</div>
+
+<hr/>
+
+<div class="row" ng-repeat="page in pages">
+    <div class="col-md-2" ng-repeat="event in page | filter:is_visible()">
+        <div class="panel panel-primary">
+            <div class="panel-heading"  style="text-align: center;">
+                <h2><a ui-sref="events.details({ eventId: event.eventCode })">{{event.date | date:'MMM d'}}</a></h2>
+            </div>
+            <div class="panel-body big" style="text-align: center;">
+                <div>{{event.date | date:'EEEE'}}</div>
+                <div>@{{event.date | date:'shortTime'}}</div>
+            </div>
+        </div>
+
+        <ul class="list-group">
+            <li class="list-group-item">{{ 10.05 | currency }}<span class="badge">Best<br/>Value</span></li>
+            <li class="list-group-item">{{ 20.00 | currency }}</li>
+        </ul>
+    </div>
+</div>

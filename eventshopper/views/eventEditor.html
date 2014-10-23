@@ -1,0 +1,12 @@
+<div ng-controller="EventEditorCtrl">
+    <div ng-if="editEnabled">
+        <div>
+            <label for="eventTitle">Title:</label>
+            <input id="eventTitle" ng-model="event.title" />
+        </div>
+        <div>
+            <label for="eventDescription">Description: </label>
+            <textarea id="eventDescription" ng-model="event.description"></textarea>
+        </div>
+    </div>
+</div>

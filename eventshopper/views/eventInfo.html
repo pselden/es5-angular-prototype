@@ -1,0 +1,6 @@
+<div ng-controller="EventInfoCtrl">
+    <div ng-if="countdown.timeLeft > 0">Time Left: {{countdown.timeLeft}} seconds.</div>
+    <div ng-if="countdown.timeLeft <= 0">Your time has expired.</div>
+    <h1>{{event.title}} on {{ event.date | date }}</h1>
+    <p>{{event.description }}</p>
+</div>
