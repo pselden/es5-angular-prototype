@@ -1,7 +1,6 @@
-<table>
-    <tbody>
-        <tr ng-repeat="price in prices">
-
-        </tr>
-    </tbody>
-</table>
+<ul class="list-group">
+    <li ng-repeat="price in prices" class="list-group-item">
+        <span><strong>{{ price.level }}</strong>: {{ price.cost | currency }}</span>
+        <span ng-if="price.tag" class="badge" style="background-color: {{price.tag.color }}">{{ price.tag.text}}</span>
+    </li>
+</ul>

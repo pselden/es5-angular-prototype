@@ -6,9 +6,10 @@ var router = require('angular-ui-router');
 var filters = require('./filters');
 var controllers = require('./controllers');
 var services = require('./services');
+var directives = require('./directives');
 
 // Angular App
-var app = angular.module('app', [router, services, controllers, filters]);
+var app = angular.module('app', [router, services, controllers, filters, directives]);
 
 app.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider){
   $urlRouterProvider.otherwise('/series');

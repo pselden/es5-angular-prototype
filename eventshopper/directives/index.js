@@ -1,6 +1,6 @@
 var angular = require('angular');
 
 var directives = angular.module('directives', []);
-directives.directive('priceTable', require('./priceTable'));
+directives.directive('esPriceTable', require('./priceTable'));
 
-module.exports = 'filters';
+module.exports = 'directives';

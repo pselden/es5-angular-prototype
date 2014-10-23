@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = [,function() {
+module.exports = function() {
     return {
         restrict: 'E',
         scope: {
@@ -8,4 +8,4 @@ module.exports = [,function() {
         },
         templateUrl: 'partials/priceTable.html'
     };
-}];
+};

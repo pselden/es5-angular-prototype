@@ -11,7 +11,7 @@ var eventService = ['$http', '$q',
                 if(result){
                     var deferred = $q.defer();
                     result = JSON.parse(result);
-                    result.events.forEach(function(event){
+                    result.events.forEach((event) => {
                         var dateStr = event.date.replace(' ', 'T') + '-05:00';
                         event.date_str = dateStr;
                         event.date = isodate(dateStr);
@@ -49,6 +49,20 @@ var eventService = ['$http', '$q',
                     event.date_str = dateStr;
                     event.date = isodate(dateStr);
                     event.visible = true;
+                    event.priceTable = [
+                        {
+                            level: 'Super Expensive',
+                            cost: 999.99
+                        },
+                        {
+                            level: 'Super Cheap',
+                            cost: 9.99,
+                            tag: {
+                                text: 'Best Value',
+                                color: '#ff69b4'
+                            }
+                        }
+                    ];
                     saveEvent(event);
                 });
 
