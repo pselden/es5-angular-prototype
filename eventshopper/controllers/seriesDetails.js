@@ -22,9 +22,9 @@ function setVisibility(event, isVisible){
     }
 }
 
-module.exports = ['$scope', '$location', 'eventService', function($scope, $location, eventService){
+module.exports = ['$scope', '$stateParams', '$location', 'eventService', function($scope, $stateParams, $location, eventService){
     var query = $location.search();
-    var issCode = query.issCode;
+    var issCode = $stateParams.seriesId;
     var lang = query.lang;
 
     $scope.pages = [];

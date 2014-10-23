@@ -11,22 +11,35 @@ var services = require('./services');
 var app = angular.module('app', [router, services, controllers, filters]);
 
 app.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider){
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/series');
 
   $stateProvider
-      .state('index', {
-        url: "/",
-        templateUrl: 'views/eventSelector.html',
-        controller: 'EventSelectorCtrl'
+      .state('series', {
+        abstract: true,
+        url: "/series",
+        views: {
+            layout: {
+                templateUrl: 'views/series.html'
+            }
+        }
+      })
+      .state('series.details', {
+        url: '/:seriesId',
+        templateUrl: 'views/series.detail.html',
+        controller: 'SeriesDetailsCtrl'
       })
       .state('events', {
           url: '/events',
           abstract: true,
-          templateUrl: 'index.html'
+          views: {
+              layout: {
+                  templateUrl: 'views/events.html'
+              }
+          }
       })
       .state('events.details', {
         url: "/:eventId",
-        templateUrl: 'views/event.html',
-        controller: 'EventCtrl'
+        templateUrl: 'views/events.details.html',
+        controller: 'EventDetailsCtrl'
       });
 }]);
