@@ -5,6 +5,11 @@
   <script src="app.js"></script>
 </head>
 <body>
+  <div ng-controller="LocaleSwitcherCtrl">
+    <select ng-model="selectedLocale" ng-change="changeLocale()">
+      <option ng-repeat="locale in supportedLocales" value="{{locale.value}}">{{locale.name}}</option>
+    </select>
+  </div>
   <div class="container" ui-view="layout">
 
   </div>

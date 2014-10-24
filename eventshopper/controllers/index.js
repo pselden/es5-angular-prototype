@@ -2,6 +2,8 @@ var angular = require('angular');
 
 var controllers = angular.module('controllers', []);
 
+controllers.controller('LocaleSwitcherCtrl', require('./localeSwitcher'));
+
 controllers.controller('SeriesDetailsCtrl', require('./seriesDetails'));
 
 controllers.controller('EventDetailsCtrl', require('./eventDetails'));
