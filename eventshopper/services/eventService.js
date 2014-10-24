@@ -1,5 +1,42 @@
 var isodate = require("isodate")
 
+function getRandom(arr){
+    return arr[Math.round(Math.random()*(arr.length-1))];
+}
+
+function generatePriceTable(){
+    const tags = [
+        { text: 'Best Value', color: '#22D269'},
+        { text: 'Sold Out', color: '#FB0F1C'},
+        { text: 'Few Left', color: '#DEFB36'},
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+    ];
+
+    var tag1 = getRandom(tags);
+    var tag2 = getRandom(tags);
+    if(tag1 === tag2){ // prevent the same tag being used twice
+        tag2 = null;
+    }
+
+    return [
+        {
+            level: 'Super Expensive',
+            cost: 999.99,
+            tag: tag1
+        },
+        {
+            level: 'Super Cheap',
+            cost: 9.99,
+            tag: tag2
+        }
+    ]
+}
+
 var eventService = ['$http', '$q',
     function ($http, $q) {
         $http.defaults.headers.common.Accept = 'application/json';
@@ -37,6 +74,7 @@ var eventService = ['$http', '$q',
 
 
 
+                events.forEach((event) => event.priceTable = generatePriceTable());
                 var result = {
                     seriesInfo: seriesInfo,
                     events: events
@@ -49,20 +87,6 @@ var eventService = ['$http', '$q',
                     event.date_str = dateStr;
                     event.date = isodate(dateStr);
                     event.visible = true;
-                    event.priceTable = [
-                        {
-                            level: 'Super Expensive',
-                            cost: 999.99
-                        },
-                        {
-                            level: 'Super Cheap',
-                            cost: 9.99,
-                            tag: {
-                                text: 'Best Value',
-                                color: '#ff69b4'
-                            }
-                        }
-                    ];
                     saveEvent(event);
                 });
 
