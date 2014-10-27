@@ -16,6 +16,7 @@
     "es6ify": "^1.4.0",
     "exorcist": "^0.1.6",
     "gulp": "^3.8.9",
+    "gulp-angular-templatecache": "^1.4.2",
     "gulp-changed": "^1.0.0",
     "gulp-debug": "^1.0.1",
     "gulp-if": "^1.2.5",

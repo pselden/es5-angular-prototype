@@ -11,6 +11,7 @@ es6ify.traceurOverrides = { blockBinding: true }; // allow "let"
 var gutil = require('gulp-util');
 var size = require('gulp-size');
 var source = require('vinyl-source-stream');
+var templateCache = require('gulp-angular-templatecache');
 var staticFiles = ['./eventshopper/**/*.html', './eventshopper/**/*.css'];
 
 function bundle(options){
@@ -22,7 +23,7 @@ function bundle(options){
     if(options.watch){
         bundler = watchify(bundler);
 
-        gulp.watch(staticFiles, ['copy']);
+        gulp.watch(staticFiles, ['templates', 'copy']);
 
         bundler.on('update', rebundle);
     }
@@ -57,5 +58,12 @@ gulp.task('bundle', function(){
     return bundle({ watch: false, minify: true });
 });
 
-gulp.task('default', ['copy', 'watch']);
-gulp.task('build', ['copy', 'bundle'])
+// adds angular templates to the template cache
+gulp.task('templates', function () {
+    gulp.src('./eventshopper/views/**/*.html')
+        .pipe(templateCache({root: 'views', standalone: true, moduleSystem: 'browserify'}))
+        .pipe(gulp.dest('./eventshopper'));
+});
+
+gulp.task('default', ['copy', 'templates', 'watch']);
+gulp.task('build', ['copy', 'templates', 'bundle'])

@@ -6,6 +6,6 @@ module.exports = function() {
         scope: {
             prices: '=prices'
         },
-        templateUrl: 'partials/priceTable.html'
+        templateUrl: 'views/partials/priceTable.html'
     };
 };
