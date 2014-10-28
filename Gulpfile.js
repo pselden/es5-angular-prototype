@@ -1,3 +1,5 @@
+'use strict';
+
 var gulp = require('gulp');
 
 var browserify = require('browserify');
@@ -12,7 +14,7 @@ var source = require('vinyl-source-stream');
 var templateCache = require('gulp-angular-templatecache');
 var es6ify = require('es6ify');
 es6ify.traceurOverrides = {blockBinding: true}; // allow "let"
-var staticFiles = ['./eventshopper/**/*.html', './eventshopper/**/*.css'];
+var staticFiles = ['./eventshopper/**/*.html', './eventshopper/translations/**', './eventshopper/**/*.css'];
 
 function bundle(options) {
   watchify.args.debug = true; // note: this generates an inline sourcemap -- not a sourcemap file
@@ -29,7 +31,7 @@ function bundle(options) {
   }
 
   if (options.minify) {
-    bundler.plugin('minifyify', {map: '/app.map.json', output: './dist/app.map.json'})
+    bundler.plugin('minifyify', {map: '/app.map.json', output: './dist/app.map.json'});
   }
 
   function rebundle() {
@@ -66,4 +68,4 @@ gulp.task('templates', function () {
 });
 
 gulp.task('default', ['copy', 'templates', 'watch']);
-gulp.task('build', ['copy', 'templates', 'bundle'])
+gulp.task('build', ['copy', 'templates', 'bundle']);

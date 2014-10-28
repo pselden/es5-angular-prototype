@@ -1,0 +1,9 @@
+{
+  "series": {
+    "count": "Diese Serie besteht aus {{events.length}} Veranstaltungen",
+    "title": "Dies ist eine Reihe Seite - diese Schale ist für alle Serien -Seiten."
+  },
+  "events": {
+    "title": "Dies ist ein Event-Seite - diese Schale ist für alle Veranstaltungsseiten ."
+  }
+}

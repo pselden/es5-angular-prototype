@@ -1,9 +1,10 @@
+'use strict';
+
 // Import npm modules.
 
 var angular = require('angular');
 var router = require('angular-ui-router');
-var translate = require('angular-translate');
-translate = 'pascalprecht.translate';
+var translate = require('./common/translate');
 
 var filters = require('./filters');
 var controllers = require('./controllers');
@@ -11,7 +12,7 @@ var services = require('./services');
 var directives = require('./directives');
 var templates = require('./templates');
 // Angular App
-var app = angular.module('app', [router, translate, templates.name, services, controllers, filters, directives]);
+var app = angular.module('app', [router, translate.name, templates.name, services, controllers, filters, directives]);
 
 app.config(['$urlRouterProvider', '$stateProvider', '$translateProvider', function($urlRouterProvider, $stateProvider, $translateProvider){
   $urlRouterProvider.otherwise('/series');
@@ -19,7 +20,7 @@ app.config(['$urlRouterProvider', '$stateProvider', '$translateProvider', functi
   $stateProvider
       .state('series', {
         abstract: true,
-        url: "/series",
+        url: '/series',
         views: {
             layout: {
                 templateUrl: 'views/series.html'
@@ -41,7 +42,7 @@ app.config(['$urlRouterProvider', '$stateProvider', '$translateProvider', functi
           }
       })
       .state('events.details', {
-        url: "/:eventId",
+        url: '/:eventId',
         templateUrl: 'views/events.details.html',
         controller: 'EventDetailsCtrl'
       });
@@ -64,6 +65,11 @@ app.config(['$urlRouterProvider', '$stateProvider', '$translateProvider', functi
         events: {
             title: 'C\'est une page de l\'événement - cette coquille est commun à toutes les pages de l\'événement.'
         }
+    });
+
+    $translateProvider.useStaticFilesLoader({
+      prefix: 'translations/',
+      suffix: '.json'
     });
 
     $translateProvider.preferredLanguage('en');
