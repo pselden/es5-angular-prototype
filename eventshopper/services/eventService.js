@@ -1,4 +1,6 @@
-var isodate = require("isodate")
+'use strict';
+
+var isodate = require('isodate');
 
 function getRandom(arr){
     return arr[Math.round(Math.random()*(arr.length-1))];
@@ -34,13 +36,13 @@ function generatePriceTable(){
             cost: 9.99,
             tag: tag2
         }
-    ]
+    ];
 }
 
 var eventService = ['$http', '$q',
     function ($http, $q) {
         $http.defaults.headers.common.Accept = 'application/json';
-        var infoUrl = 'http://bfox.prod.dem/info/'; // Load from config
+        var infoUrl = 'http://dem.eventshopper.com/info/'; // Load from config
 
         function getSeriesInfo(seriesCode, lang){
             var result = localStorage.getItem('series:' + seriesCode);
@@ -69,7 +71,7 @@ var eventService = ['$http', '$q',
                         return -1;
                     if (a.date > b.date)
                         return 1;
-                    return 0
+                    return 0;
                 });
 
 
