@@ -11,58 +11,58 @@ var size = require('gulp-size');
 var source = require('vinyl-source-stream');
 var templateCache = require('gulp-angular-templatecache');
 var es6ify = require('es6ify');
-es6ify.traceurOverrides = { blockBinding: true }; // allow "let"
+es6ify.traceurOverrides = {blockBinding: true}; // allow "let"
 var staticFiles = ['./eventshopper/**/*.html', './eventshopper/**/*.css'];
 
-function bundle(options){
-    watchify.args.debug = true; // note: this generates an inline sourcemap -- not a sourcemap file
-    var bundler = browserify(es6ify.runtime, watchify.args)
-        .transform(es6ify)
-        .add('./eventshopper/app.js');
+function bundle(options) {
+  watchify.args.debug = true; // note: this generates an inline sourcemap -- not a sourcemap file
+  var bundler = browserify(es6ify.runtime, watchify.args)
+    .transform(es6ify)
+    .add('./eventshopper/app.js');
 
-    if(options.watch){
-        bundler = watchify(bundler);
+  if (options.watch) {
+    bundler = watchify(bundler);
 
-        gulp.watch(staticFiles, ['templates', 'copy']);
+    gulp.watch(staticFiles, ['templates', 'copy']);
 
-        bundler.on('update', rebundle);
-    }
+    bundler.on('update', rebundle);
+  }
 
-    if(options.minify) {
-        bundler.plugin('minifyify', {map: '/app.map.json', output: './dist/app.map.json' } )
-    }
+  if (options.minify) {
+    bundler.plugin('minifyify', {map: '/app.map.json', output: './dist/app.map.json'})
+  }
 
-    function rebundle() {
-        return bundler
-            .bundle()
-            .on('error', gutil.log.bind(gutil, 'Browserify Error'))
-            .pipe(source('app.js'))
-	        .pipe(streamify(size()))
-            .pipe(gulp.dest('dist'));
-    }
+  function rebundle() {
+    return bundler
+      .bundle()
+      .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+      .pipe(source('app.js'))
+      .pipe(streamify(size()))
+      .pipe(gulp.dest('dist'));
+  }
 
-    return rebundle();
+  return rebundle();
 }
 
-gulp.task('copy', function(){
-    return gulp.src(staticFiles, { base: './eventshopper/' })
-        .pipe(changed('dist'))
-        .pipe(gulp.dest('dist'));
+gulp.task('copy', function () {
+  return gulp.src(staticFiles, {base: './eventshopper/'})
+    .pipe(changed('dist'))
+    .pipe(gulp.dest('dist'));
 });
 
-gulp.task('watch', function() {
-    return bundle({ watch: true, minify: false });
+gulp.task('watch', function () {
+  return bundle({watch: true, minify: false});
 });
 
-gulp.task('bundle', function(){
-    return bundle({ watch: false, minify: true });
+gulp.task('bundle', function () {
+  return bundle({watch: false, minify: true});
 });
 
 // adds angular templates to the template cache
 gulp.task('templates', function () {
-    gulp.src('./eventshopper/views/**/*.html')
-        .pipe(templateCache({root: 'views', standalone: true, moduleSystem: 'browserify'}))
-        .pipe(gulp.dest('./eventshopper'));
+  gulp.src('./eventshopper/views/**/*.html')
+    .pipe(templateCache({root: 'views', standalone: true, moduleSystem: 'browserify'}))
+    .pipe(gulp.dest('./eventshopper'));
 });
 
 gulp.task('default', ['copy', 'templates', 'watch']);
