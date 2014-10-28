@@ -32,6 +32,11 @@ app.config(['$urlRouterProvider', '$stateProvider', '$translateProvider', functi
         templateUrl: 'views/series.detail.html',
         controller: 'SeriesDetailsCtrl'
       })
+      .state('series.prices', {
+        url: '/:seriesId/prices',
+        templateUrl: 'views/series.prices.html',
+        controller: 'SeriesPricesCtrl'
+      })
       .state('events', {
           url: '/events',
           abstract: true,

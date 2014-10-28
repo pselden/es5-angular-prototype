@@ -1,0 +1,7 @@
+<ol ng-if="purchases">
+    <li ng-repeat="purchase in purchases">You bought {{ purchase.event.title }} on {{ purchase.event.date | date:'fullDate' }} for {{ purchase.price | currency }}</li>
+</ol>
+
+<div ng-repeat="events in pages">
+    <es-price-list price-levels="priceLevels" events="events" buy-event="buyEvent"></es-price-list>
+</div>

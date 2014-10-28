@@ -1,6 +1,7 @@
 <div class="row">
     <h1>{{seriesInfo.title}}</h1>
     <p>{{ 'series.count' | translate:{events: events} }}</p>
+    <p><a ui-sref="series.prices({seriesId: seriesInfo.seriesCode })">View Price Table</a></p>
     <hr/>
     <input type="date" value="2016-09-01" ng-model="eventfilter.date" ng-change="select_by_date()"/>
     <span ng-repeat="dow in eventfilter.dow">
