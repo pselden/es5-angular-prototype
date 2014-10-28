@@ -5,13 +5,13 @@ var watchify = require('watchify');
 
 var changed = require('gulp-changed');
 var streamify = require('gulp-streamify'); // required for uglify because it has no streaming mode
-var es6ify = require('es6ify');
-es6ify.traceurOverrides = { blockBinding: true }; // allow "let"
 
 var gutil = require('gulp-util');
 var size = require('gulp-size');
 var source = require('vinyl-source-stream');
 var templateCache = require('gulp-angular-templatecache');
+var es6ify = require('es6ify');
+es6ify.traceurOverrides = { blockBinding: true }; // allow "let"
 var staticFiles = ['./eventshopper/**/*.html', './eventshopper/**/*.css'];
 
 function bundle(options){
