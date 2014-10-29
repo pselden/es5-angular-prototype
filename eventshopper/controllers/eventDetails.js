@@ -7,10 +7,10 @@ module.exports = ['$scope', '$stateParams', 'eventService', function ($scope, $s
   });
 
   $scope.countdown = {};
-  $scope.editEnabled = true;
+  $scope.purchaseEnabled = $scope.editEnabled = true;
   $scope.$watch('countdown.timeLeft', (newValue) => {
     if (newValue <= 0) {
-      $scope.editEnabled = false;
+      $scope.purchaseEnabled = $scope.editEnabled = false;
     }
   });
 }];

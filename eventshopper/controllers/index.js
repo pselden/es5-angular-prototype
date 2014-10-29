@@ -10,5 +10,6 @@ controllers.controller('SeriesPricesCtrl', require('./seriesPrices'));
 controllers.controller('EventDetailsCtrl', require('./eventDetails'));
 controllers.controller('EventInfoCtrl', require('./eventInfo'));
 controllers.controller('EventEditorCtrl', require('./eventEditor'));
+controllers.controller('PurchaseEventCtrl', require('./purchaseEvent'));
 
 module.exports = 'controllers';
