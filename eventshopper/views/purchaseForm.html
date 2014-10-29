@@ -6,7 +6,7 @@
 
     <form role="form" name="buyEventForm" novalidate ng-if="purchaseEnabled">
         <div class="form-group">
-            <label for="numTickets"> Number of Tickets:</label>
+            <label for="numTickets" class="control-label"> Number of Tickets:</label>
             <select ng-model="numTickets" id="numTickets" class="form-control" required>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -15,22 +15,25 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input ng-model="user.firstName" type="text" class="form-control" id="firstName" placeholder="First name" required>
+            <label for="firstName" class="control-label">First Name</label>
+            <input name="firstName" ng-model="user.firstName" type="text" class="form-control" id="firstName" placeholder="First name" required ng-model-options="{ updateOn: 'blur' }">
         </div>
-        <div class="form-group">
+        <div class="form-group" class="control-label">
             <label for="lastName">Password</label>
-            <input ng-model="user.lastName" type="text" class="form-control" id="lastName" placeholder="Last name" required>
+            <input ng-model="user.lastName" type="text" class="form-control" id="lastName" placeholder="Last name" required ng-model-options="{ updateOn: 'blur' }">
+        </div>
+        <div class="form-group" ng-class="{'has-error': buyEventForm.email.$error.email }">
+            <label for="email" class="control-label">Email address</label>
+            <input name="email" ng-model="user.email" type="email" class="form-control" id="email" placeholder="Enter your email" ng-model-options="{ updateOn: 'blur' }" required>
         </div>
         <div class="form-group">
-            <label for="email">Email address</label>
-            <input ng-model="user.email" type="email" class="form-control" id="email" placeholder="Enter your email" required>
-        </div>
-        <div class="form-group">
-            <label for="confirmEmail">Confirm email</label>
-            <input ng-model="user.emailConfirm" type="email" class="form-control" id="confirmEmail" placeholder="Confirm your email" match="user.email" required>
+            <label for="confirmEmail" class="control-label">Confirm email</label>
+            <input ng-model="user.emailConfirm" type="email" class="form-control" id="confirmEmail" placeholder="Confirm your email" match="user.email">
         </div>
         <button ng-click="buyEvent()"
-                ng-disabled="buyEventForm.$invalid || isUnchanged(user)" class="btn btn-default">Buy</button>
+                ng-disabled="buyEventForm.$invalid" class="btn btn-default">Buy</button>
+
+        <pre>{{buyEventForm.email.$error || json}}</pre>
+        <pre>{{user | json}}</pre>
     </form>
 </div>
