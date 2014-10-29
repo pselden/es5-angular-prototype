@@ -33,7 +33,7 @@
         <button ng-click="buyEvent()"
                 ng-disabled="buyEventForm.$invalid" class="btn btn-default">Buy</button>
 
-        <pre>{{buyEventForm.email.$error || json}}</pre>
+        <pre>{{buyEventForm | json}}</pre>
         <pre>{{user | json}}</pre>
     </form>
 </div>

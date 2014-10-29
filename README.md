@@ -3,6 +3,12 @@ es5-angular-prototype
 
 Steps:
 
-  npm install
+```bash
+npm install
   
-  gulp
+gulp # runs the build process and watches
+  
+npm start # starts a static file server
+
+open http://localhost:4000/#/series/TrainSeries1?lang=en
+```

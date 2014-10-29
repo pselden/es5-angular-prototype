@@ -4,7 +4,7 @@
   "description": "Event Shopper Experiment Angular/Browserify",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "serve ./dist --compress -p 4000"
   },
   "author": "Vadim",
   "license": "Commercial",
@@ -28,6 +28,7 @@
     "gulp-util": "^3.0.1",
     "isodate": "^0.1.4",
     "minifyify": "^4.4.0",
+    "serve": "^1.4.0",
     "vinyl-source-stream": "^1.0.0",
     "vinyl-transform": "0.0.1",
     "watchify": "^2.0.0"
