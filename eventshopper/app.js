@@ -5,6 +5,7 @@
 var angular = require('angular');
 var router = require('angular-ui-router');
 var translate = require('./common/translate');
+var locale = require('./common/locale');
 
 var filters = require('./filters');
 var controllers = require('./controllers');
@@ -12,7 +13,7 @@ var services = require('./services');
 var directives = require('./directives');
 var templates = require('./templates');
 // Angular App
-var app = angular.module('app', [router, translate.name, templates.name, services, controllers, filters, directives]);
+var app = angular.module('app', [router, translate.name, locale.name, templates.name, services, controllers, filters, directives]);
 
 app.config(['$urlRouterProvider', '$stateProvider', '$translateProvider', function($urlRouterProvider, $stateProvider, $translateProvider){
   $urlRouterProvider.otherwise('/series');

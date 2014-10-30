@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = ['$scope', '$translate', function ($scope, $translate) {
+module.exports = ['$scope', '$translate', 'tmhDynamicLocale', function ($scope, $translate, tmhDynamicLocale) {
   $scope.selectedLocale = 'en';
   $scope.supportedLocales = [
     {value: 'en', name: 'English'},
@@ -10,5 +10,6 @@ module.exports = ['$scope', '$translate', function ($scope, $translate) {
 
   $scope.changeLocale = function () {
     $translate.use($scope.selectedLocale);
+    tmhDynamicLocale.set($scope.selectedLocale);
   };
 }];

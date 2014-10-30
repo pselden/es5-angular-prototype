@@ -13,7 +13,7 @@
                 {{ level.name }}
             </td>
             <td ng-repeat="event in events" ng-click="buyEvent(event, level)">
-                {{ event.prices[level.code] | currency }}
+                {{ event.prices[level.code] | currency:"USD$"}}
             </td>
         </tr>
     </tbody>
