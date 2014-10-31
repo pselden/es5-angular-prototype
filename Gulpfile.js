@@ -67,5 +67,24 @@ gulp.task('templates', function () {
     .pipe(gulp.dest('./eventshopper'));
 });
 
+var karma = require('karma').server;
+gulp.task('test:unit', function (done) {
+  testUnit({singleRun: true}, done);
+});
+
+gulp.task('test:unit:watch', function (done) {
+  testUnit({singleRun: false}, done);
+});
+
+function testUnit(options, done){
+  options = options || {};
+  karma.start({
+    configFile: __dirname + '/test/karma.conf.js',
+    singleRun: options.singleRun
+  }, done);
+}
+
+
 gulp.task('default', ['copy', 'templates', 'watch']);
 gulp.task('build', ['copy', 'templates', 'bundle']);
+
