@@ -11,7 +11,7 @@ describe('Event Details Controller', function() {
     spyOn(eventService, 'getEvent').andCallFake(function(){
       getEventDeferred = $q.defer();
       return getEventDeferred.promise;
-    })
+    });
     ctrl = $controller('EventDetailsCtrl', {$scope: scope, $stateParams: $stateParams, eventService: eventService});
   }));
 

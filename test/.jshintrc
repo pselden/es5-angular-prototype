@@ -1,0 +1,5 @@
+{
+  "jasmine": true,
+  "browserify": true,
+  "globals"       : { "angular": true, "inject": true }     // additional predefined global variables
+}
