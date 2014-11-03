@@ -1,4 +1,4 @@
-<ol ng-if="purchases">
+<ol id="purchases" ng-if="purchases">
     <li ng-repeat="purchase in purchases">You bought {{ purchase.event.title }} on {{ purchase.event.date | date:'fullDate' }} for {{ purchase.price | currency }}</li>
 </ol>
 

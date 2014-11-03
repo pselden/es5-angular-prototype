@@ -2,7 +2,7 @@
     <thead>
         <tr>
             <td></td>
-            <td ng-repeat="event in events">
+            <td class="event--date"ng-repeat="event in events">
                 {{ event.date | date }}
             </td>
         </tr>
@@ -12,7 +12,7 @@
             <td>
                 {{ level.name }}
             </td>
-            <td ng-repeat="event in events" ng-click="buyEvent(event, level)">
+            <td class="event--price" ng-repeat="event in events" ng-click="buyEvent(event, level)">
                 {{ event.prices[level.code] | currency:"USD$"}}
             </td>
         </tr>
