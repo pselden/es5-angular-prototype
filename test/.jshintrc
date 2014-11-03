@@ -1,5 +1,11 @@
 {
   "jasmine": true,
   "browserify": true,
-  "globals"       : { "angular": true, "inject": true }     // additional predefined global variables
+  "globals": {
+    "angular": true,
+    "inject": true, // angular
+    "element": true, // protractor
+    "by": true, // protactor
+    "browser": true // protractor
+  }
 }

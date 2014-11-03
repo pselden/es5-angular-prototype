@@ -1,10 +1,6 @@
 exports.config = {
   allScriptsTimeout: 11000,
 
-  specs: [
-    'e2e/*.js'
-  ],
-
   capabilities: {
     'browserName': 'chrome'
   },
@@ -16,7 +12,13 @@ exports.config = {
   framework: 'jasmine',
 
   jasmineNodeOpts: {
-    defaultTimeoutInterval: 30000
+    defaultTimeoutInterval: 30000,
+    showColors: true
+  },
+
+  suites: {
+    series: 'e2e/series/*.test.js',
+    events: 'e2e/events/*.test.js'
   },
 
   chromeDriver: '../node_modules/webdriver-manager/selenium/chromedriver'
