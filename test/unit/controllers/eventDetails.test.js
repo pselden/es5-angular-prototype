@@ -8,7 +8,7 @@ describe('Event Details Controller', function() {
   beforeEach(inject(function($q, $rootScope, eventService, $controller) {
     var $stateParams = { eventId: 1};
     scope = $rootScope.$new();
-    spyOn(eventService, 'getEvent').andCallFake(function(){
+    spyOn(eventService, 'getEvent').and.callFake(function(){
       getEventDeferred = $q.defer();
       return getEventDeferred.promise;
     });
